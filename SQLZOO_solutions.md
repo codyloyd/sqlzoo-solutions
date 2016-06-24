@@ -1,6 +1,10 @@
 # SQLZOO Solutions
 I've compiled the solutions to all of all 10 levels on the [SQLZOO Tutoral](http://sqlzoo.net/wiki/SQL_Tutorial).  
 
+## Sections:
+1. [SELECT basics](#select-basics)
+2. [SELECT from WORLD](#select-from-world)
+
 ## SELECT basics
 Some simple queries to get you started
 
@@ -24,7 +28,7 @@ Some simple queries to get you started
   SELECT name, area FROM world
     WHERE area BETWEEN 200000 AND 250000
 ```
-## SELECT from WORLD Tutorial
+## SELECT from WORLD
 1.
 ```sql
 SELECT name, continent, population FROM world
@@ -192,3 +196,4 @@ SELECT winner, subject
  WHERE yr=1984
  ORDER BY subject in ('Chemistry','Physics'), subject, winner
 ```
+## SELECT in SELECT
