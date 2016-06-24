@@ -36,35 +36,43 @@ WHERE population>200000000
 ```
 3.
 ```
-SELECT name, gdp/population FROM world WHERE population > 200000000
+SELECT name, gdp/population FROM world
+  WHERE population > 200000000
 ```
 4.
 ```
-SELECT name, population/1000000 FROM world WHERE continent = 'South America'
+SELECT name, population/1000000 FROM world
+  WHERE continent = 'South America'
 ```
 5.
 ```
-SELECT name,population FROM world WHERE name IN ('France','Germany','Italy')
+SELECT name,population FROM world
+  WHERE name IN ('France','Germany','Italy')
 ```
 6.
 ```
-SELECT name FROM world WHERE name LIKE '%United%'
+SELECT name FROM world
+  WHERE name LIKE '%United%'
 ```
 7.
 ```
-select name, population, area from world where population > 250000000 or area > 3000000
+select name, population, area from world
+  where population > 250000000 or area > 3000000
 ```
 8.
 ```
-select name, population, area from world where population > 250000000 xor area > 3000000
+select name, population, area from world
+  where population > 250000000 xor area > 3000000
 ```
 9.
 ```
-select name, ROUND(population/1000000,2), ROUND(gdp/1000000000,2) from world where continent = 'South America'
+select name, ROUND(population/1000000,2), ROUND(gdp/1000000000,2) from world
+  where continent = 'South America'
 ```
 10.
 ```
-select name, ROUND(gdp/population,-3) from world where gdp > 1000000000000
+select name, ROUND(gdp/population,-3) from world
+  where gdp > 1000000000000
 ```
 ### Harder Questions:
 11.
@@ -95,4 +103,62 @@ SELECT name, continent, CASE
     WHEN continent = 'Caribbean' THEN 'South America'    
                  ELSE continent END
 FROM world ORDER BY name
+```
+
+## SELECT from NOBEL
+1.
+```
+
+```
+2.
+```
+
+```
+3.
+```
+
+```
+4.
+```
+
+```
+5.
+```
+
+```
+6.
+```
+
+```
+7.
+```
+
+```
+8.
+```
+
+```
+9.
+```
+
+```
+10.
+```
+
+```
+11.
+```
+
+```
+12.
+```
+
+```
+13.
+```
+
+```
+14.
+```
+
 ```
