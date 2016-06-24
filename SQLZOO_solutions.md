@@ -5,7 +5,7 @@ I've compiled the solutions to all of all 10 levels on the [SQLZOO Tutoral](http
 1. [SELECT basics](#select-basics)
 2. [SELECT from WORLD](#select-from-world)
 3. [SELECT from NOBEL](#select-from-nobel)
-4. [SELECT from SELECT](#select-from-select)
+4. [SELECT in SELECT](#select-in-select)
 5. [SUM and COUNT](#sum-and-count)
 6. [JOIN](#join)
 7. [More JOIN](#more-join)
