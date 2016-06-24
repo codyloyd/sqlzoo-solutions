@@ -228,32 +228,56 @@ SELECT name, continent FROM world
 ```
 4.
 ```sql
-
+SELECT name, population FROM world
+  WHERE population > (SELECT population FROM world
+                        WHERE name = 'Canada')
+    AND population < (SELECT population FROM world
+                        WHERE name = 'Poland')
 ```
 5.
 ```sql
-
+SELECT name, CONCAT(ROUND(population/(SELECT population FROM world
+                          WHERE name = 'Germany')*100,0),'%')
+             FROM world WHERE continent = 'Europe'
 ```
 6.
 ```sql
-
+SELECT name FROM world
+  WHERE gdp > ALL(SELECT gdp FROM world
+                   WHERE gdp > 0 AND continent = 'Europe')
 ```
 7.
 ```sql
-
+SELECT continent, name, area FROM world x
+  WHERE area >= ALL
+    (SELECT area FROM world y
+        WHERE y.continent=x.continent
+          AND area>0)
 ```
 8.
 ```sql
-
+SELECT continent, name FROM world x
+  WHERE name <= ALL
+    (SELECT name FROM world y
+        WHERE y.continent=x.continent)
+--Got this one to work.. but I'm still not quite sure what the variables are doing.
 ```
 ### Difficult Questions that use techniques not covered in previous sections...
 9.
 ```sql
-
+SELECT name, continent, population FROM world x
+  WHERE 25000000 >= ALL(SELECT population
+	                FROM world y
+		        WHERE x.continent = y.continent
+                        AND y.population>0);
 ```
 10.
 ```sql
-
+SELECT name, continent FROM world x
+  WHERE population >= ALL(SELECT population*3
+                         FROM world y
+                         WHERE x.continent = y.continent
+                         and y.name != x.name)
 ```
 ## SUM and COUNT
 1.
