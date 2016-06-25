@@ -418,15 +418,20 @@ SELECT id, title
 ```
 2.
 ```sql
-this is a test
+SELECT yr
+  FROM movie
+  WHERE title = 'Citizen Kane'
 ```
 3.
 ```sql
-
+SELECT id, title, yr FROM movie
+  WHERE title LIKE '%Star Trek%'
+  ORDER BY yr
 ```
 4.
 ```sql
-
+SELECT title FROM movie
+  WHERE id IN (11768, 11955, 21191) 
 ```
 5.
 ```sql
