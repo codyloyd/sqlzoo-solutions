@@ -282,43 +282,44 @@ SELECT name, continent FROM world x
 ## SUM and COUNT
 1.
 ```sql
-
+SELECT SUM(population)
+FROM world
 ```
 2.
 ```sql
-
+SELECT DISTINCT continent FROM world
 ```
 3.
 ```sql
-
+SELECT SUM(gdp) FROM world
+  WHERE continent = 'Africa'
 ```
 4.
 ```sql
-
+SELECT COUNT(name) FROM world
+  WHERE area >= 1000000
 ```
 5.
 ```sql
-
+SELECT SUM(population) FROM world
+  WHERE name IN ('France','Germany','Spain')
 ```
 6.
 ```sql
-
+SELECT continent, COUNT(name) FROM world
+GROUP BY continent
 ```
 7.
 ```sql
-
+SELECT continent, COUNT(name) FROM world
+  WHERE population > 10000000
+  GROUP BY continent
 ```
 8.
 ```sql
-
-```
-9.
-```sql
-
-```
-10.
-```sql
-
+SELECT continent FROM world
+  GROUP BY continent
+  HAVING SUM(population) > 100000000
 ```
 ## JOIN
 1.
