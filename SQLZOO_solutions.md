@@ -412,7 +412,9 @@ ORDER BY mdate, matchid, team1, team2
 ## More JOIN
 1.
 ```sql
-
+SELECT id, title
+ FROM movie
+ WHERE yr=1962
 ```
 2.
 ```sql
