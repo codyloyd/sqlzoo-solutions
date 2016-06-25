@@ -540,7 +540,8 @@ SELECT DISTINCT name FROM casting
 ## Using NULL
 1.
 ```sql
-
+SELECT name FROM teacher
+  WHERE dept IS NULL
 ```
 2.
 ```sql
