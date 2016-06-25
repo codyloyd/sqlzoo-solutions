@@ -431,55 +431,111 @@ SELECT id, title, yr FROM movie
 4.
 ```sql
 SELECT title FROM movie
-  WHERE id IN (11768, 11955, 21191) 
+  WHERE id IN (11768, 11955, 21191)
 ```
 5.
 ```sql
-
+SELECT id FROM actor
+  WHERE name = 'Glenn Close'
 ```
 6.
 ```sql
-
+SELECT id FROM movie
+  WHERE title = 'Casablanca'
 ```
 7.
 ```sql
-
+SELECT name FROM casting JOIN actor ON (id=actorid)
+  WHERE movieid=11768
 ```
 8.
 ```sql
-
+SELECT name FROM casting
+  JOIN actor ON (actor.id=actorid)
+  JOIN movie ON (movie.id=movieid)
+  WHERE title = 'Alien'
 ```
 9.
 ```sql
-
+SELECT title FROM casting
+  JOIN movie ON (movie.id = movieid)
+  JOIN actor ON (actor.id = actorid)
+  WHERE name = 'Harrison Ford'
 ```
 10.
 ```sql
-
+SELECT title FROM casting
+  JOIN movie ON (movie.id = movieid)
+  JOIN actor ON (actor.id = actorid)
+  WHERE name = 'Harrison Ford'  AND ord > 1
 ```
 11.
 ```sql
-
+SELECT title, name FROM casting
+  JOIN movie ON (movie.id = movieid)
+  JOIN actor ON (actor.id = actorid)
+  WHERE yr = 1962 and ord = 1
 ```
+### Harder Questions
 12.
 ```sql
-
+SELECT yr,COUNT(title) FROM
+  movie JOIN casting ON movie.id=movieid
+         JOIN actor   ON actorid=actor.id
+WHERE name='John Travolta'
+GROUP BY yr
+HAVING COUNT(title)=(SELECT MAX(c) FROM
+(SELECT yr,COUNT(title) AS c FROM
+   movie JOIN casting ON movie.id=movieid
+         JOIN actor   ON actorid=actor.id
+ WHERE name='John Travolta'
+ GROUP BY yr) AS t
+)
 ```
 13.
 ```sql
-
+SELECT title, name FROM casting
+  JOIN movie ON movie.id = movieid
+  JOIN actor ON actor.id = actorid
+WHERE ord = 1
+	AND movie.id IN
+	(SELECT movie.id FROM movie
+	   JOIN casting ON movie.id = movieid
+	   JOIN actor ON actor.id = actorid
+           WHERE actor.name = 'Julie Andrews')
 ```
 14.
 ```sql
-
+SELECT DISTINCT name FROM casting
+  JOIN movie ON movie.id = movieid
+  JOIN actor ON actor.id = actorid
+  WHERE actorid IN (
+	SELECT actorid FROM casting
+	  WHERE ord = 1
+	  GROUP BY actorid
+	  HAVING COUNT(actorid) >= 30)
+ORDER BY name
 ```
 15.
 ```sql
-
+SELECT title, COUNT(actorid) FROM casting
+  JOIN movie ON movieid = movie.id
+  WHERE yr = 1978
+  GROUP BY movieid, title
+  ORDER BY COUNT(actorid) DESC
 ```
 16.
 ```sql
-
+SELECT DISTINCT name FROM casting
+  JOIN actor ON actorid = actor.id
+  WHERE name != 'Art Garfunkel'
+	AND movieid IN (
+		SELECT movieid
+		FROM movie
+		JOIN casting ON movieid = movie.id
+		JOIN actor ON actorid = actor.id
+		WHERE actor.name = 'Art Garfunkel'
+)
 ```
 ## Using NULL
 1.
