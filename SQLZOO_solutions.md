@@ -540,7 +540,7 @@ SELECT DISTINCT name FROM casting
 ## Using NULL
 1.
 ```sql
-this is a test...
+
 ```
 2.
 ```sql
