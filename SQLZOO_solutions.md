@@ -545,56 +545,77 @@ SELECT name FROM teacher
 ```
 2.
 ```sql
-
+SELECT teacher.name, dept.name
+ FROM teacher INNER JOIN dept
+           ON (teacher.dept=dept.id)
 ```
 3.
 ```sql
-
+SELECT teacher.name, dept.name
+ FROM teacher LEFT JOIN dept
+           ON (teacher.dept=dept.id)
 ```
 4.
 ```sql
-
+SELECT teacher.name, dept.name
+ FROM teacher RIGHT JOIN dept
+           ON (teacher.dept=dept.id)
 ```
 5.
 ```sql
-
+SELECT teacher.name, COALESCE(teacher.mobile,'07986 444 2266')  FROM teacher
 ```
 6.
 ```sql
-
+SELECT teacher.name, COALESCE(dept.name,'None') FROM teacher
+  LEFT JOIN dept ON teacher.dept = dept.id
 ```
 7.
 ```sql
-
+SELECT COUNT(name), COUNT(mobile) FROM teacher
 ```
 8.
 ```sql
-
+SELECT dept.name, COUNT(teacher.dept) FROM teacher
+  RIGHT JOIN dept ON dept.id = teacher.dept
+  GROUP BY dept.name
 ```
 9.
 ```sql
-
+SELECT name, CASE WHEN dept IN (1,2) THEN 'Sci'
+                  ELSE 'Art'
+                  END
+                  FROM teacher
 ```
 10.
 ```sql
-
+SELECT name, CASE WHEN dept IN (1,2) THEN 'Sci'
+                  WHEN dept = 3 THEN 'Art'
+                  ELSE 'None'
+                  END
+                  FROM teacher
 ```
 ## Self JOIN
 1.
 ```sql
-
+SELECT DISTINCT COUNT(*) FROM stops
 ```
 2.
 ```sql
-
+SELECT id FROM stops
+  WHERE name = 'Craiglockhart'
 ```
 3.
 ```sql
-
+SELECT id, name FROM stops JOIN route ON (stops.id = route.stop)
+  WHERE num = 4
 ```
 4.
 ```sql
-
+SELECT company, num, COUNT(*)
+FROM route WHERE stop=149 OR stop=53
+GROUP BY company, num
+HAVING COUNT(*) = 2
 ```
 5.
 ```sql
