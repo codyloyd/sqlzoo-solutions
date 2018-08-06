@@ -504,6 +504,19 @@ WHERE ord = 1
 	   JOIN actor ON actor.id = actorid
            WHERE actor.name = 'Julie Andrews')
 ```
+13.b (using a subquery)
+```sql
+SELECT movie.title, actor.name FROM movie 
+  JOIN casting ON casting.movieid = movie.id
+  JOIN actor ON casting.actorid = actor.id
+WHERE casting.ord = 1 
+  AND casting.movieid IN (
+    SELECT distinct movieid FROM casting 
+      WHERE actorid = 
+       (SELECT id FROM actor 
+       	 WHERE name = 'Julie Andrews')
+    )
+```
 14.
 ```sql
 SELECT DISTINCT name FROM casting
