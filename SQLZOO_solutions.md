@@ -445,8 +445,10 @@ SELECT id FROM movie
 ```
 7.
 ```sql
-SELECT name FROM casting JOIN actor ON (id=actorid)
-  WHERE movieid=11768
+SELECT name FROM casting 
+  JOIN actor ON (id=actorid)
+  JOIN movie ON (movie.id=movieid)
+  WHERE movieid=11768 <!-- movieid=27 -->
 ```
 8.
 ```sql
@@ -522,7 +524,7 @@ SELECT title, COUNT(actorid) FROM casting
   JOIN movie ON movieid = movie.id
   WHERE yr = 1978
   GROUP BY movieid, title
-  ORDER BY COUNT(actorid) DESC
+  ORDER BY COUNT(actorid) DESC, title
 ```
 16.
 ```sql
