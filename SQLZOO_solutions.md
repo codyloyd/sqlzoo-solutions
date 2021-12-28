@@ -319,7 +319,7 @@ SELECT continent, COUNT(name) FROM world
 ```sql
 SELECT continent FROM world
   GROUP BY continent
-  HAVING SUM(population) > 100000000
+  HAVING SUM(population) >= 100000000
 ```
 ## JOIN
 1.
