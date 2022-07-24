@@ -73,7 +73,7 @@ select name, population, area from world
 8.
 ```sql
 select name, population, area from world
-  where population > 250000000 xor area > 3000000
+  where (population > 250000000 and area < 3000000) or (area > 3000000 and population <250000000)
 ```
 9.
 ```sql
