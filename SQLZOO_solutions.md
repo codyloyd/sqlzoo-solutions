@@ -407,7 +407,7 @@ SELECT mdate, team1,
 FROM game
 LEFT JOIN goal ON game.id = goal.matchid
 GROUP BY matchid, mdate, team1, team2
-ORDER BY mdate, matchid, team1, team2
+ORDER BY matchid, mdate, team1, team2
 ```
 ## More JOIN
 1.
