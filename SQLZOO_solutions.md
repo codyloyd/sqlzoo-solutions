@@ -400,8 +400,9 @@ SELECT matchid, mdate, COUNT(*) FROM goal
 ```
 13.
 ```sql
-SELECT mdate, team1,
-	SUM(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
+SELECT mdate, 
+    team1,
+    SUM(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
     team2,
     SUM(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
 FROM game
