@@ -395,10 +395,11 @@ SELECT matchid, mdate, COUNT(*)
 ```
 12.
 ```sql
-SELECT matchid, mdate, COUNT(*) FROM goal
-  JOIN game ON (matchid=id)
-  WHERE teamid = 'GER'
-  GROUP BY matchid, mdate
+SELECT matchid, mdate, COUNT(*) 
+FROM goal
+JOIN game ON (matchid=id)
+WHERE teamid = 'GER'
+GROUP BY matchid, mdate
 ```
 13.
 ```sql
