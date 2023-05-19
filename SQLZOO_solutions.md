@@ -199,9 +199,11 @@ SELECT winner, yr, subject FROM nobel
 14.
 ```sql
 SELECT winner, subject
-  FROM nobel
- WHERE yr=1984
- ORDER BY subject in ('Chemistry','Physics'), subject, winner
+FROM nobel
+WHERE yr=1984
+ORDER BY 
+CASE WHEN subject IN ('Physics', 'Chemistry') THEN 1 ELSE 0 END,
+subject, winner
 ```
 ## SELECT in SELECT
 1.
