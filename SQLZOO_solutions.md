@@ -525,7 +525,7 @@ SELECT title, COUNT(actorid) FROM casting
   JOIN movie ON movieid = movie.id
   WHERE yr = 1978
   GROUP BY movieid, title
-  ORDER BY COUNT(actorid) DESC
+  ORDER BY COUNT(actorid) DESC , title
 ```
 16.
 ```sql
