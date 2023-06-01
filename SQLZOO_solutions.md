@@ -199,9 +199,11 @@ SELECT winner, yr, subject FROM nobel
 14.
 ```sql
 SELECT winner, subject
-  FROM nobel
- WHERE yr=1984
- ORDER BY subject in ('Chemistry','Physics'), subject, winner
+FROM nobel
+WHERE yr=1984
+ORDER BY 
+CASE WHEN subject IN ('Physics', 'Chemistry') THEN 1 ELSE 0 END,
+subject, winner
 ```
 ## SELECT in SELECT
 1.
@@ -393,10 +395,11 @@ SELECT matchid, mdate, COUNT(*)
 ```
 12.
 ```sql
-SELECT matchid, mdate, COUNT(*) FROM goal
-  JOIN game ON (matchid=id)
-  WHERE teamid = 'GER'
-  GROUP BY matchid, mdate
+SELECT matchid, mdate, COUNT(*) 
+FROM goal
+JOIN game ON (matchid=id)
+WHERE teamid = 'GER'
+GROUP BY matchid, mdate
 ```
 13.
 ```sql
@@ -522,7 +525,7 @@ SELECT title, COUNT(actorid) FROM casting
   JOIN movie ON movieid = movie.id
   WHERE yr = 1978
   GROUP BY movieid, title
-  ORDER BY COUNT(actorid) DESC
+  ORDER BY COUNT(actorid) DESC , title
 ```
 16.
 ```sql
